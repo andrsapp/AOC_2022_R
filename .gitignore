@@ -1,8 +1,9 @@
 # txt files
 .txt
 
-# first pass gross code
+# folders
 /first_pass
+/inputs
 
 # test file
 /test.r
