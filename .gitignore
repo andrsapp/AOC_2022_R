@@ -6,4 +6,5 @@ first_pass/
 inputs/
 
 # test file
-/test.r
+test.r
+test.txt
