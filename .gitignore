@@ -1,19 +1,8 @@
 # txt files
 .txt
 
-/day10_sample.txt
-/day3.txt
-/day4.txt
-/day4_sample.txt
-/day5_sample.txt
-/day5_sample1.txt
-/day6.txt
-/day6_sample.txt
-/day7.txt
-/day7_sample.txt
-/day8.txt
-/day8_sample.txt
-/day9.txt
-/day9_sample.txt
+# first pass gross code
+/first_pass
+
+# test file
 /test.r
-/test.txt

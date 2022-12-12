@@ -21,32 +21,6 @@ sum + edge
 
 # p2 ========================================================
 
-input <- readLines("day8.txt")
-
-wide <- nchar(input[1])
-long <- length(input)
-
-max_score <- 1
-for (j in 2:(length(input) - 1)) {
-    for (i in 2:(nchar(input[j]) - 1)) {
-        tree <- substr(input[j], i, i)
-        score <- 1
-
-        up_pts <- j - f_up(which(substr(input[1:(j - 1)], i, i) >= tree))
-        down_pts <- f_down(which(substr(input[(j + 1):length(input)], i, i) >= tree)
-            , long - j)
-        left_pts <- i -
-            f_left(which(strsplit(substr(input[j], 1, i - 1), "")[[1]] >= tree ))
-        right_pts <- f_right(which(strsplit(substr(input[j], i + 1
-            , nchar(input[j])), "")[[1]] >= tree)
-            , wide - i)
-        score <- prod(up_pts, down_pts, left_pts, right_pts)
-        if (score > max_score) max_score <- score
-    }
-}
-max_score
-
-
 f_up <- function(k) {
     return(ifelse(identical(k, integer(0)), 1, max(k)))
 }
@@ -63,34 +37,34 @@ f_right <- function(k, n) {
     return(ifelse(identical(k, integer(0)), n, min(k)))
 }
 
+input <- readLines("day8.txt")
 
+wide <- nchar(input[1])
+long <- length(input)
 
-f_error2 <- function(k, n) {
-    return(ifelse(identical(k, integer(0)), n, max(k)))
+max_score <- 1
+for (j in 2:(length(input) - 1)) {
+    for (i in 2:(nchar(input[j]) - 1)) {
+        tree <- substr(input[j], i, i)
+        score <- 1
+
+        up_pts <- j - f_up(which(substr(
+            input[1:(j - 1)], i, i) >= tree))
+        down_pts <- f_down(which(substr(
+            input[(j + 1):length(input)], i, i) >= tree), long - j)
+        left_pts <- i - f_left(which(strsplit(substr(
+            input[j], 1, i - 1), "")[[1]] >= tree ))
+        right_pts <- f_right(which(strsplit(substr(
+            input[j], i + 1, nchar(input[j])), "")[[1]] >= tree), wide - i)
+        score <- prod(up_pts, down_pts, left_pts, right_pts)
+
+        if (score > max_score) max_score <- score
+    }
 }
+max_score
 
-up_pts
-left_pts
-right_pts
-down_pts
+
 prod(up_pts, down_pts, left_pts, right_pts)
-
-
-i <- 4
-j <- 2
-tree <- substr(input[j], i, i)
-f_error1(which(substr(input[1:(j - 1)], i, i) >= tree))
-which(substr(input[1:(j - 1)], i, i) >= tree)
-f_error2(which(substr(input[(j + 1):length(input)], i, i) >= tree)
-            , long - j)
-which(substr(input[(j + 1):length(input)], i, i) >= tree)
-
-
-
-f_error1(which(strsplit(substr(input[j], 1, i - 1), "")[[1]] >= tree ))
-f_error2(which(strsplit(substr(input[j], i + 1
-            , nchar(input[j])), "")[[1]] >= tree)
-            , wide - i)
 
 which(substr(input[1:(j - 1)], i, i) >= tree)
 which(substr(input[(j + 1):length(input)], i, i) >= tree)
