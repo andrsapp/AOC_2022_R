@@ -2,8 +2,8 @@
 .txt
 
 # folders
-/first_pass
-/inputs
+first_pass/
+inputs/
 
 # test file
 /test.r
